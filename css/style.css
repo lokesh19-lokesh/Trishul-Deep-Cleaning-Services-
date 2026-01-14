@@ -37,7 +37,6 @@ a:focus {
 .wrapper {
     position: relative;
     width: 100%;
-    max-width: 1366px;
     margin: 0 auto;
     background: #ffffff;
 }
@@ -94,9 +93,30 @@ a:focus {
     z-index: 1000;
 }
 
+@media (max-width: 992px) {
+    .header {
+        position: relative;
+        /* Make it not sticky on mobile to save space */
+    }
+
+    .header.nav-sticky {
+        position: sticky;
+        top: 0;
+    }
+}
+
 .header.nav-sticky {
     box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
     background: #00539C !important;
+}
+
+.header.nav-sticky .header-top {
+    display: none;
+}
+
+.header.nav-sticky .navbar {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 
@@ -104,7 +124,13 @@ a:focus {
 
 @media (min-width: 992px) {
     .header .row {
-        padding: 0 60px;
+        padding: 0 4%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .header .row {
+        padding: 0 6%;
     }
 }
 
@@ -126,8 +152,9 @@ a:focus {
 .header .brand img {
     width: 100%;
     max-width: 130px;
-    height: 100%;
+    height: auto;
     max-height: 100px;
+    padding: 5px 0;
 }
 
 .header .topbar {
@@ -208,6 +235,22 @@ a:focus {
     }
 }
 
+@media (max-width: 576px) {
+    .header .brand img {
+        max-width: 80px;
+    }
+
+    .header .topbar-col {
+        display: block;
+        text-align: center;
+        padding: 2px 0;
+    }
+
+    .header .topbar-social {
+        margin-top: 10px;
+    }
+}
+
 @media (max-width: 992px) {
     .header .brand {
         text-align: center;
@@ -280,6 +323,15 @@ a:focus {
     padding-top: 30px;
     padding-bottom: 30px;
     overflow: hidden;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
+@media (min-width: 992px) {
+    .hero {
+        min-height: 100vh;
+    }
 }
 
 .hero-video {
@@ -299,6 +351,24 @@ a:focus {
     color: #ffffff;
 }
 
+@media (min-width: 1200px) and (max-width: 1600px) {
+    .hero h2 {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero h2 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h2 {
+        font-size: 32px;
+    }
+}
+
 .hero h2 span {
     color: #FFD662;
 }
@@ -307,6 +377,12 @@ a:focus {
     margin: 10px 0 20px 0;
     font-size: 22px;
     color: #ffffff;
+}
+
+@media (max-width: 576px) {
+    .hero p {
+        font-size: 18px;
+    }
 }
 
 .hero a.btn {
@@ -332,6 +408,9 @@ a:focus {
     background: rgba(255, 255, 255, .9);
     border-radius: 5px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: 0;
 }
 
 .hero .form h3 {
@@ -388,7 +467,7 @@ a:focus {
     background: #ffffff;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
     .hero .form {
         margin-top: 45px;
     }
@@ -1774,6 +1853,17 @@ a:focus {
 .footer .footer-form {
     position: relative;
     margin-bottom: 45px;
+    height: calc(100% - 45px);
+    /* Ensure equal height columns for alignment */
+}
+
+@media (max-width: 992px) {
+
+    .footer .footer-contact,
+    .footer .footer-link,
+    .footer .footer-form {
+        height: auto;
+    }
 }
 
 .footer .footer-contact h2,
@@ -2110,11 +2200,33 @@ a[href="https://thebubblesmedia.com/"]:hover::after {
     /* Darker Header for Classic Cleaning */
 }
 
+/* Responsive fixes for pricing tables */
+@media (max-width: 576px) {
+
+    .price-table .table th,
+    .price-table .table td {
+        font-size: 14px;
+        padding: 10px 5px;
+    }
+
+    .price-header-row h2 {
+        font-size: 22px;
+    }
+}
+
 /* Footer Logo Animation */
 @keyframes floatLogo {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 .footer-logo-animated {
