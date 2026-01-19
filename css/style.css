@@ -89,7 +89,7 @@ a:focus {
     top: 0;
     width: 100%;
     padding: 5px 0 0 0;
-    background: #00539C;
+    background: #8b79b5;
     z-index: 1000;
 }
 
@@ -107,7 +107,7 @@ a:focus {
 
 .header.nav-sticky {
     box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
-    background: #00539C !important;
+    background: #8b79b5 !important;
 }
 
 .header.nav-sticky .header-top {
@@ -1843,7 +1843,7 @@ a:focus {
     position: relative;
     margin-top: 45px;
     padding-top: 90px;
-    background: #00539C;
+    background: #8b79b5;
     color: #ffffff;
     font-weight: 300;
 }
