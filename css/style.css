@@ -259,7 +259,8 @@ a:focus {
 
 @media (max-width: 576px) {
     .header .brand img {
-        max-width: 80px;
+        max-width: 250px;
+        max-height: 180px;
     }
 
     .header .topbar-col {
