@@ -133,30 +133,76 @@
                     </div>
                     <div class="col-md-6">
                         <div class="contact-form">
-                            <form>
+                            <form id="contactForm" action="send_email.php" method="POST">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <input type="text" class="form-control" placeholder="Your Name"
+                                        <input type="text" class="form-control" name="name" placeholder="Your Name"
                                             required="required" />
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <input type="email" class="form-control" placeholder="Your Email"
+                                        <input type="email" class="form-control" name="email" placeholder="Your Email"
                                             required="required" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="tel" class="form-control" placeholder="Your Contact Number"
-                                        pattern="[0-9]{10}" required="required" />
+                                    <input type="tel" class="form-control" name="phone"
+                                        placeholder="Your Contact Number" pattern="[0-9]{10}" required="required" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Subject" required="required" />
+                                    <input type="text" class="form-control" name="subject" placeholder="Subject"
+                                        required="required" />
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control" rows="6" placeholder="Message"
+                                    <textarea class="form-control" name="message" rows="6" placeholder="Message"
                                         required="required"></textarea>
                                 </div>
-                                <div><button class="btn" type="submit">Send Message</button></div>
+                                <div id="formMessage" style="margin-bottom: 15px; display: none;"></div>
+                                <div><button class="btn" type="submit" id="submitBtn">Send Message</button></div>
                             </form>
+
+                            <script>
+                                document.getElementById('contactForm').addEventListener('submit', function (e) {
+                                    e.preventDefault();
+
+                                    const form = this;
+                                    const formData = new FormData(form);
+                                    const submitBtn = document.getElementById('submitBtn');
+                                    const formMessage = document.getElementById('formMessage');
+
+                                    // Disable submit button
+                                    submitBtn.disabled = true;
+                                    submitBtn.textContent = 'Sending...';
+
+                                    // Send form data
+                                    fetch('send_email.php', {
+                                        method: 'POST',
+                                        body: formData
+                                    })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.success) {
+                                                formMessage.style.display = 'block';
+                                                formMessage.style.color = '#28a745';
+                                                formMessage.textContent = data.message;
+                                                form.reset();
+                                            } else {
+                                                formMessage.style.display = 'block';
+                                                formMessage.style.color = '#dc3545';
+                                                formMessage.textContent = data.message;
+                                            }
+                                        })
+                                        .catch(error => {
+                                            formMessage.style.display = 'block';
+                                            formMessage.style.color = '#dc3545';
+                                            formMessage.textContent = 'An error occurred. Please try again.';
+                                        })
+                                        .finally(() => {
+                                            // Re-enable submit button
+                                            submitBtn.disabled = false;
+                                            submitBtn.textContent = 'Send Message';
+                                        });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
