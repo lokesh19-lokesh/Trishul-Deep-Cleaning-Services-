@@ -165,6 +165,88 @@
         <!-- Service Start -->
         <div class="service">
             <div class="container">
+                <!-- Highlighted Text Section -->
+                <style>
+                    @keyframes slideInUp {
+                        from {
+                            opacity: 0;
+                            transform: translateY(30px);
+                        }
+
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+
+                    @keyframes pulseGlow {
+
+                        0%,
+                        100% {
+                            box-shadow: 0 10px 30px rgba(255, 165, 0, 0.3);
+                        }
+
+                        50% {
+                            box-shadow: 0 15px 40px rgba(255, 165, 0, 0.6);
+                        }
+                    }
+
+                    .highlight-banner {
+                        text-align: center;
+                        margin-bottom: 40px;
+                        padding: 30px 20px;
+                        background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+                        border-radius: 15px;
+                        animation: slideInUp 1s ease-out, pulseGlow 3s ease-in-out infinite;
+                    }
+
+                    .highlight-banner h2 {
+                        font-size: 2.5rem;
+                        font-weight: 900;
+                        color: #ffffff;
+                        text-transform: uppercase;
+                        letter-spacing: 3px;
+                        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+                        margin: 0;
+                        line-height: 1.2;
+                    }
+
+                    .highlight-banner h2 span {
+                        color: #1a1a1a;
+                    }
+
+                    /* Mobile Responsive Styles */
+                    @media (max-width: 768px) {
+                        .highlight-banner {
+                            padding: 20px 15px;
+                            margin-bottom: 30px;
+                            border-radius: 10px;
+                        }
+
+                        .highlight-banner h2 {
+                            font-size: 1.5rem;
+                            letter-spacing: 2px;
+                        }
+                    }
+
+                    @media (max-width: 480px) {
+                        .highlight-banner {
+                            padding: 15px 10px;
+                            margin-bottom: 20px;
+                        }
+
+                        .highlight-banner h2 {
+                            font-size: 1.2rem;
+                            letter-spacing: 1px;
+                        }
+                    }
+                </style>
+                <div class="highlight-banner">
+                    <h2>
+                        Clean Today <span>Happy Everyday</span>
+                    </h2>
+                </div>
+
                 <div class="section-header">
                     <p>Our Services</p>
                     <!-- <h2>Provide Services Worldwide</h2> -->
