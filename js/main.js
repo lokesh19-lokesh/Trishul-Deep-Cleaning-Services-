@@ -15,13 +15,13 @@
     });
 
     // Sticky Navbar
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 0) {
-            $('.header').addClass('nav-sticky');
-        } else {
-            $('.header').removeClass('nav-sticky');
-        }
-    });
+    // $(window).scroll(function () {
+    //     if ($(this).scrollTop() > 0) {
+    //         $('.header').addClass('nav-sticky');
+    //     } else {
+    //         $('.header').removeClass('nav-sticky');
+    //     }
+    // });
 
 
     // Dropdown on mouse hover
