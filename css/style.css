@@ -180,11 +180,11 @@ a:focus {
 }
 
 .header .brand .mobile-logo {
-    display: none;
+    display: inline-block;
 }
 
 .header .brand .desktop-logo {
-    display: inline-block;
+    display: none;
 }
 
 .header .topbar {
