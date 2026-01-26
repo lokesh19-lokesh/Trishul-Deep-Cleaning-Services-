@@ -132,18 +132,18 @@
                     <div class="col-lg-5">
                         <div class="form">
                             <h3>Get A Quote</h3>
-                            <form>
-                                <input class="form-control" type="text" placeholder="Your Name">
-                                <input class="form-control" type="text" placeholder="Mobile Number">
+                            <form action="send_email.php" method="post">
+                                <input class="form-control" type="text" name="name" placeholder="Your Name">
+                                <input class="form-control" type="text" name="phone" placeholder="Mobile Number">
                                 <div class="control-group">
-                                    <select class="custom-select">
+                                    <select class="custom-select" name="service">  
                                         <option selected>Choose a service</option>
                                         <option value="1">House Cleaning</option>
                                         <option value="2">Apartment Cleaning</option>
                                         <option value="3">Office Cleaning</option>
                                     </select>
                                 </div>
-                                <textarea class="form-control" placeholder="Comment"></textarea>
+                                <textarea class="form-control" name="message" placeholder="Comment"></textarea>
                                 <button class="btn btn-block">Get A Quote</button>
                             </form>
                         </div>
