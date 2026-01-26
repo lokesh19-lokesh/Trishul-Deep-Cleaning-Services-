@@ -77,7 +77,8 @@
                                             <path
                                                 d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
                                         </svg></a> -->
-                                    <a href="https://www.facebook.com/profile.php?id=61587005638330"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://www.facebook.com/profile.php?id=61587005638330"><i
+                                            class="fab fa-facebook-f"></i></a>
                                     <a href="https://www.youtube.com/channel/UCx847bPyYaGuex_lVcCpZqg"
                                         target="_blank"><i class="fab fa-youtube"></i></a>
                                     <a href="https://www.instagram.com/trishuldeepcleaningservices/" target="_blank"><i
@@ -105,7 +106,7 @@
                                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                                 </div>
                                 <div class="ml-auto">
-                                    <a href="#" class="btn">Get A Quote</a>
+                                    <a href="contact.html" class="btn">Get A Quote</a>
                                 </div>
                             </div>
                         </div>
@@ -132,20 +133,81 @@
                     <div class="col-lg-5">
                         <div class="form">
                             <h3>Get A Quote</h3>
-                            <form action="send_email.php" method="post">
-                                <input class="form-control" type="text" name="name" placeholder="Your Name">
-                                <input class="form-control" type="text" name="phone" placeholder="Mobile Number">
-                                <div class="control-group">
-                                    <select class="custom-select" name="service">  
-                                        <option selected>Choose a service</option>
-                                        <option value="1">House Cleaning</option>
-                                        <option value="2">Apartment Cleaning</option>
-                                        <option value="3">Office Cleaning</option>
+                            <form id="quoteForm">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="name" placeholder="Your Name"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="email" name="email" placeholder="Your Email"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="tel" name="phone" placeholder="Mobile Number"
+                                        pattern="[0-9]{10}" required>
+                                </div>
+                                <div class="control-group form-group">
+                                    <select class="custom-select" name="service">
+                                        <option selected value="">Choose a service</option>
+                                        <option value="House Cleaning">House Cleaning</option>
+                                        <option value="Apartment Cleaning">Apartment Cleaning</option>
+                                        <option value="Office Cleaning">Office Cleaning</option>
+                                        <option value="Deep Cleaning">Deep Cleaning</option>
+                                        <option value="Sofa/Carpet Cleaning">Sofa/Carpet Cleaning</option>
                                     </select>
                                 </div>
-                                <textarea class="form-control" name="message" placeholder="Comment"></textarea>
-                                <button class="btn btn-block">Get A Quote</button>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="message" placeholder="Comment/Message"
+                                        required></textarea>
+                                </div>
+                                <div id="quoteMessage" style="margin-bottom: 10px; display: none;"></div>
+                                <button class="btn btn-block" type="submit" id="quoteSubmitBtn">Get A Quote</button>
                             </form>
+                            <script>
+                                document.getElementById('quoteForm').addEventListener('submit', function (e) {
+                                    e.preventDefault();
+
+                                    const form = this;
+                                    const formData = new FormData(form);
+                                    const submitBtn = document.getElementById('quoteSubmitBtn');
+                                    const formMessage = document.getElementById('quoteMessage');
+
+                                    // Disable submit button
+                                    submitBtn.disabled = true;
+                                    submitBtn.textContent = 'Sending...';
+
+                                    // Send form data
+                                    fetch('send_email.php', {
+                                        method: 'POST',
+                                        body: formData
+                                    })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.success) {
+                                                formMessage.style.display = 'block';
+                                                formMessage.style.color = '#ffffff'; // White text for visibility on dark/colored background
+                                                formMessage.style.fontWeight = 'bold';
+                                                formMessage.textContent = data.message;
+                                                form.reset();
+                                            } else {
+                                                formMessage.style.display = 'block';
+                                                formMessage.style.color = '#ffdddd'; // Light red for errors
+                                                formMessage.textContent = data.message;
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Error:', error);
+                                            formMessage.style.display = 'block';
+                                            formMessage.style.color = '#ffdddd';
+                                            formMessage.textContent = 'An error occurred. Please try again.';
+                                        })
+                                        .finally(() => {
+                                            // Re-enable submit button
+                                            submitBtn.disabled = false;
+                                            submitBtn.textContent = 'Get A Quote';
+                                        });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -904,7 +966,8 @@
                                         <path
                                             d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
                                     </svg></a> -->
-                                <a href="https://www.facebook.com/profile.php?id=61587005638330"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.facebook.com/profile.php?id=61587005638330"><i
+                                        class="fab fa-facebook-f"></i></a>
                                 <a href="https://www.youtube.com/channel/UCx847bPyYaGuex_lVcCpZqg" target="_blank"><i
                                         class="fab fa-youtube"></i></a>
                                 <a href="https://www.instagram.com/trishuldeepcleaningservices/" target="_blank"><i
